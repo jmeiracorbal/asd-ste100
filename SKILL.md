@@ -1,11 +1,13 @@
 ---
 name: asd-ste100
-description: Writes, rewrites, and reviews technical content using ASD-STE100 Simplified Technical English principles. Use when a user asks for ASD-STE100, STE, Simplified Technical English, controlled technical English, or wants technical instructions made less ambiguous. For non-English output, apply the same clarity principles but do not claim ASD-STE100 compliance.
+description: Writes, rewrites, and reviews technical content using ASD-STE100 Simplified Technical English principles. Use when a user asks for ASD-STE100, STE, Simplified Technical English, controlled technical English, or wants technical content made clearer and less ambiguous. For non-English output, apply the same clarity principles but do not claim ASD-STE100 compliance.
 ---
 
 # ASD-STE100
 
 Use this skill to make technical content clearer, more consistent, and less ambiguous with principles from ASD-STE100 Simplified Technical English.
+
+The skill is domain-agnostic. Apply the same method to technical content from any subject field. Do not introduce domain assumptions that are not present in the source material or user request.
 
 Treat ASD-STE100 Issue 9 as the normative reference when strict compliance is required. Do not claim that AI-generated text is formally compliant unless it has been checked against the official writing rules, the controlled dictionary, and the applicable project terminology.
 
@@ -19,13 +21,18 @@ Treat ASD-STE100 Issue 9 as the normative reference when strict compliance is re
 6. Remove unnecessary synonyms, idioms, jargon, vague references, and decorative wording.
 7. Use American English spelling unless the user or an applicable directive requires a different convention.
 8. Preserve technical accuracy. Do not simplify a sentence if the simplification changes its technical meaning.
-9. When the output is not English, state internally that the result is STE-inspired rather than ASD-STE100-compliant. Apply the clarity and terminology rules, but do not present the non-English text as formal STE.
+9. Preserve established domain terminology, identifiers, symbols, units, codes, names, and required nomenclature when changing them could alter meaning.
+10. When the output is not English, treat the result as STE-inspired rather than ASD-STE100-compliant. Apply the clarity and terminology rules, but do not present the non-English text as formal STE.
 
 ## Reference files
 
 Read `references/rules.md` when you need the detailed writing constraints or must review existing text.
 
-Read `references/examples.md` when you need examples of transformations for procedures, descriptions, warnings, or software documentation.
+Read `references/checklist.md` when you need a systematic review of a text.
+
+Read `references/terminology.md` when you need to decide whether a term must be preserved, normalized, or treated as domain terminology.
+
+Read `references/examples.md` when you need domain-neutral examples of transformations for procedures and descriptions.
 
 ## Important limits
 
