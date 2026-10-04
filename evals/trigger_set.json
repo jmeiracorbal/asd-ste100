@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Explain this concept using ASD-STE100.",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you rewrite this maintenance instruction in Simplified Technical English?",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this procedure for STE terminology and sentence structure.",
+    "should_trigger": true
+  },
+  {
+    "query": "Make this technical explanation use one term per concept, short direct sentences, and explicit conditions. I want controlled technical English.",
+    "should_trigger": true
+  },
+  {
+    "query": "Explain this to me in that strict technical-English style that reduces ambiguity and keeps terminology consistent.",
+    "should_trigger": true
+  },
+  {
+    "query": "Rewrite this specification so each instruction is direct, conditions come before actions, and the technical meaning does not change.",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you make this complex technical description easier to understand using STE principles without claiming formal compliance?",
+    "should_trigger": true
+  },
+  {
+    "query": "Check whether this paragraph follows ASD STE 100 Issue 9 structure rules.",
+    "should_trigger": true
+  },
+  {
+    "query": "I need a comprehension-first explanation with controlled vocabulary and no unnecessary synonym variation.",
+    "should_trigger": true
+  },
+  {
+    "query": "Reescribe este texto técnico con principios de ASD-STE100, pero en español y sin afirmar conformidad formal.",
+    "should_trigger": true
+  },
+  {
+    "query": "Explain how a transformer works in simple terms.",
+    "should_trigger": false
+  },
+  {
+    "query": "Can you make this paragraph easier to read?",
+    "should_trigger": false
+  },
+  {
+    "query": "Proofread this technical report for grammar and spelling mistakes.",
+    "should_trigger": false
+  },
+  {
+    "query": "Translate this technical manual from English to Spanish.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rewrite this product description so it sounds more persuasive and polished.",
+    "should_trigger": false
+  },
+  {
+    "query": "Summarize this engineering article in five bullet points.",
+    "should_trigger": false
+  },
+  {
+    "query": "Shorten this paragraph to under 100 words, but keep the key points.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a friendly onboarding guide for new users of this device.",
+    "should_trigger": false
+  },
+  {
+    "query": "Improve the tone of this technical email and make it less formal.",
+    "should_trigger": false
+  },
+  {
+    "query": "Create a glossary from the technical terms in this document.",
+    "should_trigger": false
+  }
+]
