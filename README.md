@@ -1,5 +1,9 @@
 # ASD-STE100 Agent Skill
 
+[![Validate skill](https://github.com/jmeiracorbal/asd-ste100/actions/workflows/validate-skill.yml/badge.svg)](https://github.com/jmeiracorbal/asd-ste100/actions/workflows/validate-skill.yml)
+[![GitHub Release](https://img.shields.io/github/v/release/jmeiracorbal/asd-ste100)](https://github.com/jmeiracorbal/asd-ste100/releases/latest)
+[![License](https://img.shields.io/github/license/jmeiracorbal/asd-ste100)](LICENSE)
+
 An unofficial, domain-agnostic Agent Skill for explaining, writing, rewriting, and reviewing complex or technical information with principles from ASD-STE100 Simplified Technical English.
 
 The primary goal is comprehension without semantic loss: reduce ambiguity and cognitive load while preserving the information that changes meaning.
@@ -70,19 +74,39 @@ For explanations, the skill uses a comprehension-first order when the subject al
 
 This structure is not applied mechanically when a shorter explanation is sufficient.
 
+## Usage examples
+
+```text
+Explain this concept using ASD-STE100.
+```
+
+```text
+Rewrite this procedure using ASD-STE100.
+```
+
+```text
+Review this explanation for ASD-STE100 issues.
+```
+
+```text
+Check this text for strict ASD-STE100 compliance.
+```
+
+```text
+Explain this in controlled technical English without changing the technical terminology.
+```
+
 ## Deterministic verification
 
-`scripts/ste-lint.py` is a dependency-free Python verifier for rules that can be checked mechanically.
+The skill includes `scripts/ste-lint.py`, a dependency-free Python verifier for rules that can be checked mechanically.
 
-### Lint structural rules
-
-Procedural text:
+Lint procedural text:
 
 ```bash
 python scripts/ste-lint.py lint --type procedure procedure.md
 ```
 
-Descriptive text:
+Lint descriptive text:
 
 ```bash
 python scripts/ste-lint.py lint --type description description.md
@@ -145,88 +169,6 @@ For an English rewrite, the operational sequence is:
 10. Deliver only the artifact that passed the final checks.
 
 For new English text without a source artifact, the lint step applies. For reviews, deterministic lint is the first pass before the non-mechanical checklist.
-
-## Usage examples
-
-```text
-Explain this concept using ASD-STE100.
-```
-
-```text
-Rewrite this procedure using ASD-STE100.
-```
-
-```text
-Review this explanation for ASD-STE100 issues.
-```
-
-```text
-Check this text for strict ASD-STE100 compliance.
-```
-
-```text
-Explain this in controlled technical English without changing the technical terminology.
-```
-
-## Repository structure
-
-```text
-.
-├── .github/
-│   └── workflows/
-│       ├── release.yml
-│       └── validate-skill.yml
-├── SKILL.md
-├── README.md
-├── LICENSE
-├── VERSION
-├── RELEASE_NOTES.md
-├── evals/
-│   ├── evals.json
-│   └── trigger_set.json
-├── references/
-│   ├── checklist.md
-│   ├── examples.md
-│   ├── rules.md
-│   └── terminology.md
-├── scripts/
-│   └── ste-lint.py
-└── tests/
-    └── test_ste_lint.py
-```
-
-`SKILL.md` contains the operational instructions and activation description.
-
-`references/rules.md` contains the detailed writing and structural rules used by the skill.
-
-`references/checklist.md` contains the systematic review and semantic-fidelity checklist.
-
-`references/terminology.md` contains domain-neutral terminology guidance.
-
-`references/examples.md` contains domain-neutral transformation examples.
-
-`scripts/ste-lint.py` contains the deterministic structural linter and technical-detail fidelity checker.
-
-`tests/test_ste_lint.py` contains regression tests for both verifier modes.
-
-`evals/evals.json` contains behavioral evaluations for structure, semantic fidelity, ambiguity handling, explanation quality, strict-mode boundaries, and deterministic verification behavior.
-
-`evals/trigger_set.json` contains 20 activation queries: 10 that should trigger the skill and 10 adjacent or near-miss requests that should not trigger it.
-
-## Evaluation and CI
-
-The repository validates the skill on every push and pull request.
-
-The CI workflow:
-
-1. validates the evaluation JSON and the 10/10 trigger balance;
-2. runs the Python regression suite for `scripts/ste-lint.py`;
-3. validates the linter CLI entry points;
-4. runs the official Agent Skills reference validator with `skills-ref validate`;
-5. verifies local discovery with the skills CLI;
-6. verifies public discovery with `npx skills@latest add jmeiracorbal/asd-ste100 --list`.
-
-Releases are versioned from `VERSION`. A change to that file runs the release workflow, validates the repository, creates the matching Git tag, and publishes the GitHub Release from `RELEASE_NOTES.md`.
 
 ## Scope and limitations
 
