@@ -46,11 +46,15 @@ Strict mode is reserved for explicit requests for formal ASD-STE100 compliance o
 
 ```text
 .
+├── .github/
+│   └── workflows/
+│       └── validate-skill.yml
 ├── SKILL.md
 ├── README.md
 ├── LICENSE
 ├── evals/
-│   └── evals.json
+│   ├── evals.json
+│   └── trigger_set.json
 └── references/
     ├── checklist.md
     ├── examples.md
@@ -58,7 +62,7 @@ Strict mode is reserved for explicit requests for formal ASD-STE100 compliance o
     └── terminology.md
 ```
 
-`SKILL.md` contains the operational instructions for the agent.
+`SKILL.md` contains the operational instructions for the agent and the activation description used during progressive disclosure.
 
 `references/rules.md` contains the detailed writing and structural rules used by the skill.
 
@@ -69,6 +73,8 @@ Strict mode is reserved for explicit requests for formal ASD-STE100 compliance o
 `references/examples.md` contains neutral transformation examples.
 
 `evals/evals.json` contains domain-agnostic behavioral evaluations for structure, semantic fidelity, ambiguity handling, explanation quality, and strict-mode boundaries.
+
+`evals/trigger_set.json` contains 20 activation queries: 10 that should trigger the skill and 10 near-miss or adjacent requests that should not trigger it.
 
 ## Usage
 
@@ -108,7 +114,7 @@ The reference rules include structural behavior derived from ASD-STE100 Issue 9,
 
 The evaluation suite is intentionally domain-agnostic.
 
-It checks observable behavior such as:
+Behavioral evaluations check observable output properties such as:
 
 - preserving complete sentences;
 - converting complex enumerations into vertical lists without losing items;
@@ -117,6 +123,20 @@ It checks observable behavior such as:
 - detecting ambiguous references instead of inventing a meaning;
 - producing comprehension-first explanations;
 - refusing to certify strict compliance when the required official material is unavailable.
+
+Trigger evaluations test the `SKILL.md` description independently from output quality. They include explicit ASD-STE100 requests, implicit controlled-language requests, non-English STE requests, and adjacent tasks such as ordinary simplification, proofreading, translation, summarization, and marketing rewrites that should not activate the skill.
+
+## Validation
+
+GitHub Actions validates the repository on every push and pull request.
+
+The validation workflow:
+
+1. parses `evals/evals.json` and `evals/trigger_set.json` as JSON;
+2. installs the Agent Skills reference validator and runs `skills-ref validate` against the skill directory;
+3. runs `npx skills@latest add <skill-directory> --list` and verifies that the CLI discovers `asd-ste100`.
+
+This checks both Agent Skills specification compatibility and discovery by the skills CLI.
 
 ## Compliance and attribution
 
