@@ -44,7 +44,9 @@ When you simplify a sentence:
 
 - keep the subject when the sentence requires an explicit subject;
 - keep the verb;
+- keep nouns that are necessary to identify the item or action;
 - keep articles and other grammatical words when they are necessary;
+- write contractions in full instead of using shortened forms such as `don't`, `isn't`, or `aren't`;
 - keep conditions, negation, modality, quantities, units, exceptions, and dependencies;
 - split the sentence instead of deleting information when the sentence is too long;
 - preserve the same technical meaning after the split.
@@ -59,13 +61,20 @@ Use a vertical list when a sentence or paragraph contains multiple related items
 
 A vertical list must make the structure clearer. It must not change the relationship between the listed items.
 
-When you convert prose to a vertical list:
+When you make a vertical list:
 
+- put a colon at the end of the introductory text before the first item;
+- identify each item with a consistent marker such as a dash, bullet, letter, or number;
+- start each item with an uppercase letter;
+- use an article before the subject noun when applicable;
+- put a period at the end of an item if the item is a full sentence;
+- do not put a period at the end of an item if the item is not a full sentence, except for the last item;
+- do not put a comma or semicolon at the end of a list item;
+- put a period at the end of the last item;
 - preserve all items from the source;
 - preserve their order when the order has meaning;
 - preserve conditions and dependencies;
-- use parallel grammatical structure where practical;
-- keep introductory text sufficient to explain what the list means.
+- use parallel grammatical structure where practical.
 
 Do not use a vertical list for a simple statement that is clearer as one sentence.
 
