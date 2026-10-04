@@ -103,6 +103,21 @@ Why:
 - The better version keeps the condition, subject, verb, and action.
 - The meaning stays complete.
 
+## Contractions
+
+Before:
+
+`If the surface is wet, don't touch the unit.`
+
+After:
+
+`If the surface is wet, do not touch the unit.`
+
+Why:
+
+- The contraction is written in full.
+- The prohibition keeps the same meaning.
+
 ## Vertical list
 
 Before:
@@ -113,16 +128,18 @@ After:
 
 `Before you start the procedure, make sure that:`
 
-- `the guard is installed;`
-- `the access panel is closed;`
-- `the control is in the OFF position;`
-- `the area is clear.`
+- `The guard is installed`
+- `The access panel is closed`
+- `The control is in the OFF position`
+- `The area is clear.`
 
 Why:
 
 - The list makes multiple conditions easier to scan.
 - No condition is removed.
 - The relationship between the introduction and the items stays explicit.
+- The items do not end with commas or semicolons.
+- The last item ends with a period.
 
 ## Paragraph length
 
