@@ -33,7 +33,8 @@ Use this checklist when you review technical content. Apply it without assuming 
 - Put conditions before actions when the reader must know the condition first.
 - Split long logical chains into separate sentences.
 - Remove ambiguous references when the referenced item can be named directly.
-- Do not shorten a sentence by deleting a required subject, verb, article, condition, negation, quantity, unit, exception, or dependency.
+- Do not shorten a sentence by deleting a required subject, verb, noun, article, condition, negation, quantity, unit, exception, or dependency.
+- Write contractions in full when applying Issue 9 rules.
 - If a sentence is too long, split it while preserving all information that affects meaning.
 - Reject telegraphic fragments that are shorter but less complete or less clear.
 
@@ -41,9 +42,15 @@ Use this checklist when you review technical content. Apply it without assuming 
 
 - Identify sentences or paragraphs that contain many related items, actions, conditions, or requirements.
 - Use a vertical list when it makes that information materially easier to read.
+- Put a colon before the first list item.
+- Use consistent list markers.
+- Start each list item with an uppercase letter.
+- Use an article before the subject noun when applicable.
+- Use a period after a full-sentence item.
+- Do not use a comma or semicolon at the end of a list item.
+- Put a period at the end of the last list item.
 - Preserve every relevant item when converting prose to a list.
 - Preserve meaningful order, conditions, and dependencies.
-- Keep enough introductory text to explain the relationship between the list items.
 - Prefer parallel structure across list items when practical.
 - Do not create a vertical list when a simple sentence is clearer.
 
