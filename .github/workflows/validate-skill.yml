@@ -26,6 +26,19 @@ jobs:
         run: |
           python -m json.tool evals/evals.json > /dev/null
           python -m json.tool evals/trigger_set.json > /dev/null
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          trigger_set = json.loads(Path("evals/trigger_set.json").read_text())
+          assert isinstance(trigger_set, list)
+          assert len(trigger_set) == 20
+          assert len({item["query"] for item in trigger_set}) == 20
+          assert sum(item["should_trigger"] is True for item in trigger_set) == 10
+          assert sum(item["should_trigger"] is False for item in trigger_set) == 10
+          assert all(isinstance(item.get("query"), str) and item["query"].strip() for item in trigger_set)
+          assert all(isinstance(item.get("should_trigger"), bool) for item in trigger_set)
+          PY
 
       - name: Install Agent Skills reference validator
         run: python -m pip install "git+https://github.com/agentskills/agentskills.git#subdirectory=skills-ref"
@@ -33,7 +46,12 @@ jobs:
       - name: Validate Agent Skills specification
         run: skills-ref validate "$GITHUB_WORKSPACE"
 
-      - name: Validate skills CLI discovery
+      - name: Validate local skills CLI discovery
         run: |
-          npx --yes skills@latest add "$GITHUB_WORKSPACE" --list | tee /tmp/skills-list.txt
-          grep -q "asd-ste100" /tmp/skills-list.txt
+          npx --yes skills@latest add "$GITHUB_WORKSPACE" --list | tee /tmp/skills-local.txt
+          grep -q "asd-ste100" /tmp/skills-local.txt
+
+      - name: Validate public repository discovery
+        run: |
+          npx --yes skills@latest add jmeiracorbal/asd-ste100 --list | tee /tmp/skills-remote.txt
+          grep -q "asd-ste100" /tmp/skills-remote.txt
