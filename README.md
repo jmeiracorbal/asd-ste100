@@ -2,7 +2,7 @@
 
 An unofficial Agent Skill for writing, rewriting, and reviewing technical content with principles from ASD-STE100 Simplified Technical English.
 
-The skill is intended for technical documentation, procedures, explanations, software documentation, and other content where clarity, consistency, and reduced ambiguity are important.
+The skill is domain-agnostic. It is intended for technical procedures, descriptions, instructions, specifications, explanations, and other content where clarity, consistency, and reduced ambiguity are important.
 
 ## Installation
 
@@ -28,6 +28,7 @@ The skill instructs an agent to:
 - make conditions, actions, causes, and results explicit;
 - reduce unnecessary synonyms, vague wording, and decorative language;
 - preserve domain-specific technical terms when simplification would change the meaning;
+- preserve identifiers, symbols, units, codes, names, and mandatory nomenclature when required;
 - review existing technical text for ambiguity and consistency;
 - apply STE-inspired clarity principles to non-English text without claiming formal ASD-STE100 compliance.
 
@@ -39,15 +40,21 @@ The skill instructs an agent to:
 ├── README.md
 ├── LICENSE
 └── references/
+    ├── checklist.md
     ├── examples.md
-    └── rules.md
+    ├── rules.md
+    └── terminology.md
 ```
 
 `SKILL.md` contains the operational instructions for the agent.
 
 `references/rules.md` contains additional writing constraints and review guidance.
 
-`references/examples.md` contains transformation examples for technical content.
+`references/checklist.md` contains a systematic review checklist.
+
+`references/terminology.md` contains domain-agnostic terminology guidance.
+
+`references/examples.md` contains neutral transformation examples.
 
 ## Usage
 
@@ -64,7 +71,7 @@ Review this technical explanation for ASD-STE100 issues.
 ```
 
 ```text
-Explain this architecture in an ASD-STE100 style.
+Explain this technical process in an ASD-STE100 style.
 ```
 
 For non-English output, the skill applies the same clarity principles but treats the result as STE-inspired rather than formally ASD-STE100-compliant.
