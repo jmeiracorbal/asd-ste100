@@ -1,60 +1,88 @@
-# ASD-STE100 skill
+# ASD-STE100 Agent Skill
 
-An unofficial Agent Skill for explaining, writing, rewriting, and reviewing complex or technical information with principles from ASD-STE100 Simplified Technical English.
+An unofficial, domain-agnostic Agent Skill for explaining, writing, rewriting, and reviewing complex or technical information with principles from ASD-STE100 Simplified Technical English.
 
-The skill is domain-agnostic. Its primary function is to make explanations easier to understand by reducing ambiguity and cognitive load while preserving meaning.
+The primary goal is comprehension without semantic loss: reduce ambiguity and cognitive load while preserving the information that changes meaning.
 
-## Installation
+## Install
 
-Install the skill with the skills CLI:
+Install from the public repository with the skills CLI:
 
 ```bash
 npx skills add jmeiracorbal/asd-ste100
 ```
 
-To inspect the skills exposed by the repository before installing:
+Inspect the skill before installing:
 
 ```bash
 npx skills add jmeiracorbal/asd-ste100 --list
 ```
 
-## What the skill does
+## What it does
 
-The skill uses practical STE by default.
+The primary function is `explain`. The skill can also `write`, `rewrite`, and `review`.
 
-Practical STE applies ASD-STE100 principles as an output format for clear explanations without treating the result as partial formal compliance.
+It is intentionally domain-agnostic. The same method applies to software, physics, law, medicine, architecture, engineering, or any other subject. Domain terminology is preserved when replacing it could change technical meaning.
 
-The skill instructs an agent to:
+The skill applies these principles:
 
 - understand the concept before simplifying it;
 - preserve the original meaning;
+- use one preferred term for one concept;
 - explain one main idea at a time;
-- use one term for one concept;
-- prefer short and direct sentence structures;
-- make conditions, actions, causes, results, and dependencies explicit;
-- preserve quantities, units, negation, modality, exceptions, and uncertainty;
-- preserve domain-specific terminology, identifiers, symbols, codes, names, and mandatory nomenclature when required;
-- use vertical lists when complex enumerations are easier to understand that way;
-- keep one topic in each paragraph and limit paragraphs to six sentences when applying Issue 9 structure rules;
-- avoid shortening text by deleting required grammatical or technical information;
+- use short and direct sentence structures;
+- make conditions, causes, actions, results, sequence, and dependencies explicit;
+- preserve quantities, units, negation, modality, uncertainty, exceptions, identifiers, and required terminology;
+- use vertical lists when they make complex information easier to understand;
+- keep one topic per paragraph and apply the Issue 9 six-sentence paragraph limit;
 - identify ambiguity instead of silently inventing an interpretation;
-- add detail progressively when it is necessary for understanding;
-- verify English output with a deterministic linter;
-- compare rewrites against the source with a deterministic technical-detail fidelity check.
+- add detail progressively when it is necessary for understanding.
 
-Strict mode is reserved for explicit requests for formal ASD-STE100 compliance or compliance review.
+The core rule is:
+
+> Clarity must not change meaning.
+
+## Modes
+
+### Practical STE
+
+Practical STE is the default.
+
+It uses ASD-STE100 principles as a comprehension-oriented output format without claiming formal or partial compliance. It is suitable for explanations, documentation, rewrites, and reviews where clarity and semantic fidelity matter.
+
+### Strict mode
+
+Strict mode is used only when the user explicitly asks for strict ASD-STE100 compliance, formal compliance, or a compliance review.
+
+ASD-STE100 Issue 9 is the normative reference for strict mode. Formal compliance cannot be certified without the complete official writing rules, controlled dictionary, applicable approved terminology, and project-specific requirements.
+
+For non-English output, the skill applies STE-inspired clarity principles but does not describe the result as formally ASD-STE100 compliant.
+
+## Explanation structure
+
+For explanations, the skill uses a comprehension-first order when the subject allows it:
+
+1. State the concept or subject.
+2. Give the essential explanation.
+3. Explain the important relationships.
+4. Add necessary details.
+5. Add exceptions, limitations, or edge cases when they affect understanding.
+
+This structure is not applied mechanically when a shorter explanation is sufficient.
 
 ## Deterministic verification
 
 `scripts/ste-lint.py` is a dependency-free Python verifier for rules that can be checked mechanically.
 
-Lint procedural text:
+### Lint structural rules
+
+Procedural text:
 
 ```bash
 python scripts/ste-lint.py lint --type procedure procedure.md
 ```
 
-Lint descriptive text:
+Descriptive text:
 
 ```bash
 python scripts/ste-lint.py lint --type description description.md
@@ -62,16 +90,18 @@ python scripts/ste-lint.py lint --type description description.md
 
 The linter checks:
 
-- 20-word procedure sentence limit;
-- 25-word description sentence limit;
+- maximum 20 words per procedural sentence;
+- maximum 25 words per descriptive sentence;
 - maximum six sentences per paragraph;
 - contractions;
 - semicolons;
 - vertical-list introduction, capitalization, punctuation, and final period.
 
-Exit code `0` means no deterministic violation was found. Exit code `1` means one or more violations were found.
+Exit code `0` means that no deterministic violation was found. Exit code `1` means that at least one violation was found.
 
-For a rewrite, compare the final result with the original:
+### Verify rewrite fidelity
+
+Compare a final rewrite with its source:
 
 ```bash
 python scripts/ste-lint.py details original.md rewritten.md
@@ -88,7 +118,7 @@ The fidelity checker compares mechanically extractable details in both artifacts
 - negation count;
 - fenced code-block content.
 
-The check fails if one of these details disappears or a new one is introduced.
+The command fails if one of these details disappears or a new one is introduced.
 
 Machine-readable output is available for both commands:
 
@@ -97,74 +127,26 @@ python scripts/ste-lint.py --json lint --type description description.md
 python scripts/ste-lint.py --json details original.md rewritten.md
 ```
 
-The checker is intentionally narrower than semantic equivalence. Conditions, causality, sequence, uncertainty, modality, terminology, and other meaning still require the semantic-fidelity review defined by the skill.
+The checker deliberately does not pretend to prove semantic equivalence. Conditions, causality, sequence, uncertainty, modality, terminology, and other semantic relationships still require the semantic-fidelity review defined by the skill.
 
-A successful deterministic check does not certify formal ASD-STE100 compliance.
+## Rewrite verification workflow
 
-## Verification workflow
+For an English rewrite, the operational sequence is:
 
-For an English rewrite, the skill uses this sequence:
+1. Preserve the original artifact.
+2. Classify the target as procedural or descriptive.
+3. Write the draft.
+4. Run the applicable deterministic lint.
+5. Correct every reported violation.
+6. Run the fidelity comparison against the original.
+7. Correct every missing or added technical detail.
+8. Run both checks again on the final artifact.
+9. Apply the semantic-fidelity checklist.
+10. Deliver only the artifact that passed the final checks.
 
-1. preserve the original artifact;
-2. classify the target as procedural or descriptive;
-3. write the draft;
-4. run the applicable deterministic lint;
-5. correct all reported violations;
-6. run the fidelity comparison against the original;
-7. correct all missing or added technical details;
-8. run both checks again on the final artifact;
-9. apply the semantic-fidelity checklist;
-10. deliver the final text only after the deterministic checks pass.
+For new English text without a source artifact, the lint step applies. For reviews, deterministic lint is the first pass before the non-mechanical checklist.
 
-For new English text with no source artifact, only the lint step applies. For reviews, deterministic lint is the first pass before the non-mechanical checklist.
-
-## Repository structure
-
-```text
-.
-├── .github/
-│   └── workflows/
-│       └── validate-skill.yml
-├── SKILL.md
-├── README.md
-├── LICENSE
-├── evals/
-│   ├── evals.json
-│   └── trigger_set.json
-├── references/
-│   ├── checklist.md
-│   ├── examples.md
-│   ├── rules.md
-│   └── terminology.md
-├── scripts/
-│   └── ste-lint.py
-└── tests/
-    └── test_ste_lint.py
-```
-
-`SKILL.md` contains the operational instructions for the agent and the activation description used during progressive disclosure.
-
-`references/rules.md` contains the detailed writing and structural rules used by the skill.
-
-`references/checklist.md` contains the systematic review and semantic-fidelity checklist.
-
-`references/terminology.md` contains domain-agnostic terminology guidance.
-
-`references/examples.md` contains neutral transformation examples.
-
-`scripts/ste-lint.py` contains the deterministic structural linter and technical-detail fidelity checker.
-
-`tests/test_ste_lint.py` contains regression tests for both verifier modes.
-
-`evals/evals.json` contains domain-agnostic behavioral evaluations for structure, semantic fidelity, ambiguity handling, explanation quality, and strict-mode boundaries.
-
-`evals/trigger_set.json` contains 20 activation queries: 10 that should trigger the skill and 10 near-miss or adjacent requests that should not trigger it.
-
-## Usage
-
-After installation, ask the agent to use the skill when you want information explained, written, rewritten, or reviewed in an ASD-STE100-oriented style.
-
-Examples:
+## Usage examples
 
 ```text
 Explain this concept using ASD-STE100.
@@ -182,59 +164,90 @@ Review this explanation for ASD-STE100 issues.
 Check this text for strict ASD-STE100 compliance.
 ```
 
-For non-English output, the skill applies the same clarity principles but treats the result as STE-inspired rather than formally ASD-STE100-compliant.
+```text
+Explain this in controlled technical English without changing the technical terminology.
+```
 
-## Structural behavior from Issue 9
+## Repository structure
 
-The reference rules include structural behavior derived from ASD-STE100 Issue 9, including:
+```text
+.
+├── .github/
+│   └── workflows/
+│       ├── release.yml
+│       └── validate-skill.yml
+├── SKILL.md
+├── README.md
+├── LICENSE
+├── VERSION
+├── RELEASE_NOTES.md
+├── evals/
+│   ├── evals.json
+│   └── trigger_set.json
+├── references/
+│   ├── checklist.md
+│   ├── examples.md
+│   ├── rules.md
+│   └── terminology.md
+├── scripts/
+│   └── ste-lint.py
+└── tests/
+    └── test_ste_lint.py
+```
 
-- do not shorten sentences by removing words that are necessary for complete and unambiguous meaning;
-- use vertical lists when they make multiple related items, conditions, actions, or requirements easier to read;
-- keep one topic in each paragraph;
-- do not use more than six sentences in one paragraph when applying the Issue 9 paragraph rule;
-- divide text at logical boundaries instead of deleting information to meet structural limits.
+`SKILL.md` contains the operational instructions and activation description.
 
-## Evaluations
+`references/rules.md` contains the detailed writing and structural rules used by the skill.
 
-The evaluation suite is intentionally domain-agnostic.
+`references/checklist.md` contains the systematic review and semantic-fidelity checklist.
 
-Behavioral evaluations check observable output properties such as:
+`references/terminology.md` contains domain-neutral terminology guidance.
 
-- preserving complete sentences;
-- converting complex enumerations into vertical lists without losing items;
-- splitting paragraphs longer than six sentences without losing information;
-- preserving negation, modality, quantities, and units;
-- detecting ambiguous references instead of inventing a meaning;
-- producing comprehension-first explanations;
-- refusing to certify strict compliance when the required official material is unavailable.
+`references/examples.md` contains domain-neutral transformation examples.
 
-The Python regression suite separately verifies the deterministic linter and fidelity checker, including their exit codes and JSON output.
+`scripts/ste-lint.py` contains the deterministic structural linter and technical-detail fidelity checker.
 
-Trigger evaluations test the `SKILL.md` description independently from output quality. They include explicit ASD-STE100 requests, implicit controlled-language requests, non-English STE requests, and adjacent tasks such as ordinary simplification, proofreading, translation, summarization, and marketing rewrites that should not activate the skill.
+`tests/test_ste_lint.py` contains regression tests for both verifier modes.
 
-## Validation
+`evals/evals.json` contains behavioral evaluations for structure, semantic fidelity, ambiguity handling, explanation quality, strict-mode boundaries, and deterministic verification behavior.
 
-GitHub Actions validates the repository on every push and pull request.
+`evals/trigger_set.json` contains 20 activation queries: 10 that should trigger the skill and 10 adjacent or near-miss requests that should not trigger it.
 
-The validation workflow:
+## Evaluation and CI
 
-1. validates the syntax and expected 10/10 positive-negative balance of the trigger evaluation set;
-2. runs the full Python regression suite for `scripts/ste-lint.py`;
-3. validates all linter CLI entry points;
-4. installs the Agent Skills reference validator and runs `skills-ref validate` against the skill directory;
-5. runs `npx skills@latest add <skill-directory> --list` and verifies local CLI discovery;
-6. runs `npx skills@latest add jmeiracorbal/asd-ste100 --list` and verifies public repository discovery.
+The repository validates the skill on every push and pull request.
 
-This checks Agent Skills specification compatibility, verifier behavior, and the same public skills CLI path documented for installation.
+The CI workflow:
 
-## Compliance and attribution
+1. validates the evaluation JSON and the 10/10 trigger balance;
+2. runs the Python regression suite for `scripts/ste-lint.py`;
+3. validates the linter CLI entry points;
+4. runs the official Agent Skills reference validator with `skills-ref validate`;
+5. verifies local discovery with the skills CLI;
+6. verifies public discovery with `npx skills@latest add jmeiracorbal/asd-ste100 --list`.
+
+Releases are versioned from `VERSION`. A change to that file runs the release workflow, validates the repository, creates the matching Git tag, and publishes the GitHub Release from `RELEASE_NOTES.md`.
+
+## Scope and limitations
+
+The deterministic verifier covers only properties that can be checked reliably without pretending that regex or heuristics understand the full meaning of a document.
+
+It does not:
+
+- certify formal ASD-STE100 compliance;
+- reproduce or replace the official controlled dictionary;
+- infer missing project terminology;
+- prove that two texts are semantically equivalent;
+- replace human review where formal compliance is required.
+
+The skill does not silently rewrite controlled warnings, cautions, legal text, mandatory statements, or other wording that the user is not authorized to change.
+
+## ASD-STE100 attribution
 
 This project is unofficial and is not affiliated with, endorsed by, or certified by ASD or the ASD Simplified Technical English Maintenance Group (STEMG).
 
-ASD-STE100 is maintained by the ASD Simplified Technical English Maintenance Group. This repository does not replace the official standard, its controlled dictionary, approved project terminology, specialist training, or human review.
-
-The skill must not be used as evidence that generated text is formally compliant with ASD-STE100. Formal compliance requires verification against the applicable official ASD-STE100 issue and the relevant approved terminology.
+ASD-STE100 is maintained by STEMG. This repository does not replace the official standard, controlled dictionary, approved terminology, specialist training, or human review.
 
 ## License
 
-This project is licensed under the MIT License. See `LICENSE` for details.
+The project is licensed under the MIT License. See `LICENSE` for details.
