@@ -16,10 +16,14 @@
     {
       "id": 2,
       "prompt": "Rewrite this for clarity using ASD-STE100 principles: 'Before you start the procedure, make sure that the guard is installed, the access panel is closed, the control is in the OFF position, and the area is clear.'",
-      "expected_output": "A short introduction followed by a vertical list that preserves all four conditions.",
+      "expected_output": "A short introduction followed by a correctly formatted vertical list that preserves all four conditions.",
       "files": [],
       "assertions": [
         "The output uses a vertical list for the four conditions.",
+        "The introductory text ends with a colon before the list.",
+        "Each list item starts with an uppercase letter.",
+        "No list item ends with a comma or semicolon.",
+        "The last list item ends with a period.",
         "The guard condition is preserved.",
         "The access panel condition is preserved.",
         "The OFF-position condition is preserved.",
@@ -99,6 +103,18 @@
         "The output states that the official controlled dictionary is required for strict lexical verification.",
         "The output states that applicable approved terminology is required.",
         "The output distinguishes what can be reviewed from what cannot be formally verified."
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Rewrite this using Issue 9 rules: 'If the surface is wet, don't touch the unit.'",
+      "expected_output": "A complete sentence that writes the contraction in full and preserves the condition and prohibition.",
+      "files": [],
+      "assertions": [
+        "The output uses 'do not' instead of 'don't'.",
+        "The condition that the surface is wet is preserved.",
+        "The prohibition against touching the unit is preserved.",
+        "The output does not weaken or remove the prohibition."
       ]
     }
   ]
