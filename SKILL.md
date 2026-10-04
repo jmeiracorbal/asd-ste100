@@ -60,6 +60,68 @@ Preserve all information that can affect interpretation, including:
 
 If the source is ambiguous, identify the ambiguity. Do not silently invent an interpretation.
 
+## Deterministic verification
+
+Use `scripts/ste-lint.py` for English text that this skill writes, rewrites, or reviews.
+
+The deterministic checker has two commands:
+
+```text
+python scripts/ste-lint.py lint --type procedure <file>
+python scripts/ste-lint.py lint --type description <file>
+```
+
+The `lint` command checks only rules that can be evaluated mechanically with low ambiguity:
+
+- the 20-word procedure sentence limit;
+- the 25-word description sentence limit;
+- the six-sentence paragraph limit;
+- contractions;
+- semicolons;
+- vertical-list introduction, capitalization, punctuation, and final period.
+
+For a rewrite, also run:
+
+```text
+python scripts/ste-lint.py details <original-file> <rewritten-file>
+```
+
+The `details` command compares the original and rewritten text. It fails when it detects a change in any of these mechanically extractable categories:
+
+- numbers;
+- numeric ranges;
+- percentages;
+- units associated with numeric values;
+- acronyms;
+- identifiers and inline-code tokens;
+- negation count;
+- fenced code-block content.
+
+It reports both missing and newly introduced details. A rewrite must pass both `lint` and `details` before delivery.
+
+The fidelity checker is not a semantic equivalence engine. After the deterministic checks pass, still apply the semantic-fidelity rules in this file and `references/checklist.md` for conditions, causality, sequence, uncertainty, modality, terminology, and other meaning that cannot be verified mechanically.
+
+Do not report a deterministic check as passed unless the command was actually run on the final text.
+
+## Verification workflow
+
+For an English rewrite:
+
+1. Preserve the original text as the source artifact.
+2. Classify the target text as procedural or descriptive.
+3. Produce the rewritten draft.
+4. Run the appropriate `lint` command on the complete draft.
+5. Correct every reported deterministic violation.
+6. Run `details` against the original and rewritten artifacts.
+7. Restore or correct every missing, added, or changed technical detail.
+8. Run both checks again on the final rewritten artifact.
+9. Apply the semantic-fidelity checklist.
+10. Deliver only after the final artifact passes the deterministic checks.
+
+For new English text with no source artifact, run `lint` on the final text. There is no fidelity comparison because there is no original text.
+
+For a review, use `lint` as the deterministic first pass. Then review the non-mechanical rules with `references/checklist.md`.
+
 ## Strict mode
 
 Use strict mode only when the user explicitly asks for strict ASD-STE100 compliance, formal compliance, or a compliance review.
@@ -73,7 +135,9 @@ Do not claim that AI-generated text is formally compliant unless it has been che
 - the applicable approved terminology;
 - any project-specific requirements that apply to the text.
 
-When these sources are not available, identify what can be checked and what cannot be verified.
+Passing `scripts/ste-lint.py` does not establish formal ASD-STE100 compliance. The script verifies only the deterministic subset documented above.
+
+When the complete official sources are not available, identify what can be checked and what cannot be verified.
 
 ## General writing behavior
 
@@ -89,7 +153,7 @@ When these sources are not available, identify what can be checked and what cann
 
 Read `references/rules.md` when you need detailed writing constraints or must review existing text.
 
-Read `references/checklist.md` when you need a systematic review of a text.
+Read `references/checklist.md` when you need a systematic review of a text or the semantic checks that follow deterministic verification.
 
 Read `references/terminology.md` when you need to decide whether a term must be preserved, normalized, or treated as domain terminology.
 
