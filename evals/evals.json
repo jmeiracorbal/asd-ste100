@@ -116,6 +116,34 @@
         "The prohibition against touching the unit is preserved.",
         "The output does not weaken or remove the prohibition."
       ]
+    },
+    {
+      "id": 10,
+      "prompt": "Review this proposed ASD-STE100 rewrite using the skill's verification rules. Original: 'The CPU module ABC-123 must not exceed 5% load between 10 and 15 mmHg.' Proposed rewrite: 'The CPU module ABC-123 can operate at 10 mmHg.'",
+      "expected_output": "The response rejects the proposed rewrite because it loses or changes mechanically verifiable technical details and changes the semantic force of the source.",
+      "files": [],
+      "assertions": [
+        "The output does not approve the proposed rewrite.",
+        "The output identifies that 5% was lost.",
+        "The output identifies that the 10 to 15 range was lost or changed.",
+        "The output identifies that the original prohibition or 'must not' force was changed.",
+        "The output preserves ABC-123 as an identifier that must not be changed.",
+        "The output treats deterministic detail preservation as necessary but not sufficient for semantic equivalence."
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Review this English procedure with the ASD-STE100 skill: 'Don't open the access panel; the indicator must remain on while the operator carefully verifies that all four mounting bolts are fully secured before starting the calibration procedure.'",
+      "expected_output": "The response identifies deterministic structural violations before broader linguistic review and proposes a rewrite that preserves the technical requirements.",
+      "files": [],
+      "assertions": [
+        "The output identifies the contraction 'Don't'.",
+        "The output identifies the semicolon.",
+        "The output recognizes the procedure sentence-length constraint or splits the long instruction into shorter instructions.",
+        "The output preserves the requirement that the indicator remains on.",
+        "The output preserves all four mounting bolts.",
+        "The output preserves the calibration condition or sequence."
+      ]
     }
   ]
 }
