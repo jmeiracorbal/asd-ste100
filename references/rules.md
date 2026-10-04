@@ -6,13 +6,16 @@ This file is an operational summary for an AI agent. It is not a replacement for
 
 ASD-STE100 is a controlled form of English for technical documentation. Formal compliance applies to English text. If the requested output is in another language, apply these clarity principles but describe the result only as STE-inspired.
 
+Apply these rules without assuming a specific subject field. Use only the domain context present in the source material, user request, or approved terminology.
+
 ## Vocabulary
 
 - Prefer approved ASD-STE100 general vocabulary when the official dictionary is available.
 - Use an approved word only with its approved meaning and part of speech.
 - Keep one preferred term for one concept. Do not introduce synonyms for stylistic variation.
-- Preserve necessary technical nouns and technical verbs from the applicable company, industry, project, or subject field.
-- Prefer technical terms that are short and easy to understand.
+- Preserve necessary technical nouns and technical verbs from the applicable domain, organization, project, or subject field.
+- Preserve identifiers, symbols, units, codes, names, and mandatory nomenclature when changing them could alter meaning.
+- Prefer technical terms that are short and easy to understand when more than one valid term exists.
 - Do not introduce regional expressions, slang, or unnecessary jargon.
 - Use American English spelling unless an applicable directive requires a different convention.
 - Avoid `-ing` forms when they create grammatical or semantic ambiguity. Keep them only when their use is permitted, such as an approved word or a valid technical noun.
@@ -41,9 +44,9 @@ ASD-STE100 is a controlled form of English for technical documentation. Formal c
 - Split long logical chains into separate sentences.
 - Preserve the technical meaning even when a simpler sentence would be shorter.
 
-## Safety text
+## Controlled or mandatory text
 
-Do not silently rewrite controlled warnings, cautions, legal text, or mandatory safety wording. Preserve required wording unless the user explicitly asks for a proposed STE revision and has authority to change it.
+Do not silently rewrite controlled warnings, cautions, legal text, mandatory statements, or other wording that the user is not authorized to change. Preserve required wording unless the user explicitly asks for a proposed STE revision and has authority to change it.
 
 ## Compliance
 
