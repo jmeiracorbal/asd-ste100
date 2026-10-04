@@ -33,6 +33,28 @@ Use this checklist when you review technical content. Apply it without assuming 
 - Put conditions before actions when the reader must know the condition first.
 - Split long logical chains into separate sentences.
 - Remove ambiguous references when the referenced item can be named directly.
+- Do not shorten a sentence by deleting a required subject, verb, article, condition, negation, quantity, unit, exception, or dependency.
+- If a sentence is too long, split it while preserving all information that affects meaning.
+- Reject telegraphic fragments that are shorter but less complete or less clear.
+
+## Vertical lists
+
+- Identify sentences or paragraphs that contain many related items, actions, conditions, or requirements.
+- Use a vertical list when it makes that information materially easier to read.
+- Preserve every relevant item when converting prose to a list.
+- Preserve meaningful order, conditions, and dependencies.
+- Keep enough introductory text to explain the relationship between the list items.
+- Prefer parallel structure across list items when practical.
+- Do not create a vertical list when a simple sentence is clearer.
+
+## Paragraphs
+
+- Keep one topic in each paragraph.
+- Count the sentences in each paragraph.
+- Do not allow more than six sentences in a paragraph when applying Issue 9 structure rules.
+- Divide paragraphs longer than six sentences at a logical boundary.
+- Do not remove information only to satisfy the six-sentence limit.
+- Keep conditions and dependent information together after a paragraph split.
 
 ## Procedures
 
@@ -47,6 +69,17 @@ Use this checklist when you review technical content. Apply it without assuming 
 - Prefer active voice.
 - Use passive voice only when it is necessary for technical accuracy or when the actor is unknown or irrelevant.
 - Apply the Issue 9 descriptive sentence-length limit when strict compliance is required.
+
+## Semantic fidelity
+
+- Confirm that quantities and units are unchanged.
+- Confirm that conditions and exceptions are unchanged.
+- Confirm that negation is unchanged.
+- Confirm that cause-and-effect relationships are unchanged.
+- Confirm that sequence and dependency are unchanged.
+- Confirm that uncertainty and probability are unchanged.
+- Confirm that obligation, permission, recommendation, and possibility keep the same force.
+- If the source is ambiguous, identify the ambiguity instead of resolving it without evidence.
 
 ## Controlled text
 
