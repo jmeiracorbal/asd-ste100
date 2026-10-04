@@ -132,11 +132,12 @@ GitHub Actions validates the repository on every push and pull request.
 
 The validation workflow:
 
-1. parses `evals/evals.json` and `evals/trigger_set.json` as JSON;
+1. validates the syntax and expected 10/10 positive-negative balance of the trigger evaluation set;
 2. installs the Agent Skills reference validator and runs `skills-ref validate` against the skill directory;
-3. runs `npx skills@latest add <skill-directory> --list` and verifies that the CLI discovers `asd-ste100`.
+3. runs `npx skills@latest add <skill-directory> --list` and verifies local CLI discovery;
+4. runs `npx skills@latest add jmeiracorbal/asd-ste100 --list` and verifies public repository discovery.
 
-This checks both Agent Skills specification compatibility and discovery by the skills CLI.
+This checks Agent Skills specification compatibility and the same public skills CLI path documented for installation.
 
 ## Compliance and attribution
 
