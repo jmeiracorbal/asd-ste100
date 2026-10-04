@@ -1,6 +1,7 @@
 ---
 name: asd-ste100
 description: Use this skill when the user explicitly asks for ASD-STE100, Simplified Technical English (STE), controlled technical English, or wants complex or technical information explained, written, rewritten, or reviewed in a controlled, low-ambiguity style with consistent terminology and short direct sentences. Use it for comprehension-first technical explanations and STE-oriented rewrites or reviews. Do not use it for ordinary explanations, generic simplification, creative or marketing copy, translation, or proofreading unless controlled-language or STE behavior is requested. For non-English output, apply STE-inspired clarity principles without claiming ASD-STE100 compliance.
+license: MIT
 ---
 
 # ASD-STE100
