@@ -1,0 +1,105 @@
+{
+  "skill_name": "asd-ste100",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Rewrite this in practical ASD-STE100 style: 'When the indicator is red, move the control to the OFF position.'",
+      "expected_output": "A complete, direct sentence that preserves the condition and action without reducing the text to telegraphic fragments.",
+      "files": [],
+      "assertions": [
+        "The output preserves the condition that the indicator is red.",
+        "The output preserves the action to set or move the control to OFF.",
+        "The output contains a complete grammatical sentence with an explicit verb.",
+        "The output does not use telegraphic fragments such as 'Indicator red' or 'Control to OFF'."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Rewrite this for clarity using ASD-STE100 principles: 'Before you start the procedure, make sure that the guard is installed, the access panel is closed, the control is in the OFF position, and the area is clear.'",
+      "expected_output": "A short introduction followed by a vertical list that preserves all four conditions.",
+      "files": [],
+      "assertions": [
+        "The output uses a vertical list for the four conditions.",
+        "The guard condition is preserved.",
+        "The access panel condition is preserved.",
+        "The OFF-position condition is preserved.",
+        "The clear-area condition is preserved.",
+        "The output does not add new conditions."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Rewrite this paragraph using ASD-STE100 structure without removing information: 'The system has two operating states. The first state is normal operation. The second state is standby. The indicator is green during normal operation. The indicator is amber during standby. The control changes the operating state. The change can take up to five seconds.'",
+      "expected_output": "The seven-sentence paragraph is divided into two or more logical paragraphs, with no paragraph containing more than six sentences and no source information removed.",
+      "files": [],
+      "assertions": [
+        "The output contains at least two paragraphs.",
+        "No paragraph contains more than six sentences.",
+        "Both operating states are preserved.",
+        "Both indicator colors and their corresponding states are preserved.",
+        "The control action is preserved.",
+        "The five-second maximum is preserved."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Rewrite this for clarity: 'The operator must not open the cover while the unit is energized.'",
+      "expected_output": "A clearer sentence that preserves the condition and the prohibition exactly in force.",
+      "files": [],
+      "assertions": [
+        "The output preserves the condition that the unit is energized.",
+        "The output preserves the prohibition against opening the cover.",
+        "The output does not weaken 'must not' into 'should not', 'avoid', 'may not', or another weaker expression."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Rewrite this in ASD-STE100 style: 'Keep the distance between 10 mm and 15 mm.'",
+      "expected_output": "A direct sentence that preserves both numeric limits and the millimeter unit.",
+      "files": [],
+      "assertions": [
+        "The output preserves 10 mm.",
+        "The output preserves 15 mm.",
+        "The output preserves the fact that the values define an allowed range.",
+        "The output does not change the unit."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Rewrite this instruction using ASD-STE100 principles: 'Move the unit next to the support and inspect it.'",
+      "expected_output": "The response identifies that 'it' is ambiguous because it can refer to the unit or the support, and does not silently choose one referent.",
+      "files": [],
+      "assertions": [
+        "The output explicitly identifies the ambiguous reference.",
+        "The output identifies the unit and the support as plausible referents.",
+        "The output does not invent which object must be inspected."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Explain this concept in practical ASD-STE100 style: A regulator keeps an output near a target value by comparing the measured value with the target and changing the control input from that difference. If the measured value is below the target, the regulator increases the input. If the measured value is above the target, the regulator decreases the input. Large delays can make the response unstable.",
+      "expected_output": "A comprehension-first explanation that states the concept, explains the comparison and corrective relationship, and then adds the instability limitation without changing the source meaning.",
+      "files": [],
+      "assertions": [
+        "The explanation first establishes the purpose of the regulator.",
+        "The relationship between target value, measured value, and control input is explicit.",
+        "The below-target behavior is preserved.",
+        "The above-target behavior is preserved.",
+        "The effect of large delays on stability is preserved.",
+        "The explanation does not introduce domain assumptions not present in the prompt."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Check this paragraph for strict ASD-STE100 compliance and certify that it is compliant. You do not have access to the official Issue 9 dictionary or the approved project terminology.",
+      "expected_output": "The response explains that formal compliance cannot be certified without the complete official rules, controlled dictionary, and applicable approved terminology, while still identifying checks that can be performed from the available text.",
+      "files": [],
+      "assertions": [
+        "The output does not certify formal ASD-STE100 compliance.",
+        "The output states that the official controlled dictionary is required for strict lexical verification.",
+        "The output states that applicable approved terminology is required.",
+        "The output distinguishes what can be reviewed from what cannot be formally verified."
+      ]
+    }
+  ]
+}
