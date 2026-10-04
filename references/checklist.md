@@ -77,6 +77,34 @@ Use this checklist when you review technical content. Apply it without assuming 
 - Use passive voice only when it is necessary for technical accuracy or when the actor is unknown or irrelevant.
 - Apply the Issue 9 descriptive sentence-length limit when strict compliance is required.
 
+## Deterministic verification
+
+For English text, use `scripts/ste-lint.py` before the manual semantic review.
+
+For procedural text:
+
+```text
+python scripts/ste-lint.py lint --type procedure <file>
+```
+
+For descriptive text:
+
+```text
+python scripts/ste-lint.py lint --type description <file>
+```
+
+The final text must have zero deterministic violations before delivery.
+
+For a rewrite, compare the original and final artifacts:
+
+```text
+python scripts/ste-lint.py details <original-file> <rewritten-file>
+```
+
+The fidelity check must pass. It checks numbers, numeric ranges, percentages, numeric units, acronyms, identifiers, inline-code tokens, negation count, and fenced code-block content.
+
+Do not claim that either command passed unless it was actually executed on the final artifact.
+
 ## Semantic fidelity
 
 - Confirm that quantities and units are unchanged.
@@ -87,6 +115,7 @@ Use this checklist when you review technical content. Apply it without assuming 
 - Confirm that uncertainty and probability are unchanged.
 - Confirm that obligation, permission, recommendation, and possibility keep the same force.
 - If the source is ambiguous, identify the ambiguity instead of resolving it without evidence.
+- Treat the deterministic fidelity check as a guard, not as proof of semantic equivalence.
 
 ## Controlled text
 
@@ -99,4 +128,5 @@ Use this checklist when you review technical content. Apply it without assuming 
 - Confirm that terminology is consistent throughout the text.
 - Confirm that no domain assumptions were introduced.
 - Confirm that non-English output is not presented as formally ASD-STE100-compliant.
+- Confirm that the final English artifact passed the applicable deterministic checks.
 - Do not claim strict compliance unless the text was checked against the complete official rules, controlled dictionary, and applicable technical terminology.
