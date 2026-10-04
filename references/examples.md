@@ -83,6 +83,113 @@ Why:
 - `item identifier` is an explicit technical noun.
 - The required action is clear.
 
+## Complete sentences
+
+Before:
+
+`When the indicator is red, move the control to the OFF position.`
+
+Bad simplification:
+
+`Indicator red. Control to OFF.`
+
+Better:
+
+`If the indicator is red, set the control to OFF.`
+
+Why:
+
+- The shorter fragments remove grammatical information.
+- The better version keeps the condition, subject, verb, and action.
+- The meaning stays complete.
+
+## Vertical list
+
+Before:
+
+`Before you start the procedure, make sure that the guard is installed, the access panel is closed, the control is in the OFF position, and the area is clear.`
+
+After:
+
+`Before you start the procedure, make sure that:`
+
+- `the guard is installed;`
+- `the access panel is closed;`
+- `the control is in the OFF position;`
+- `the area is clear.`
+
+Why:
+
+- The list makes multiple conditions easier to scan.
+- No condition is removed.
+- The relationship between the introduction and the items stays explicit.
+
+## Paragraph length
+
+Before:
+
+`The system has two operating states. The first state is normal operation. The second state is standby. The indicator is green during normal operation. The indicator is amber during standby. The control changes the operating state. The change can take up to five seconds.`
+
+After:
+
+`The system has two operating states. The first state is normal operation. The second state is standby.`
+
+`The indicator is green during normal operation. The indicator is amber during standby. The control changes the operating state. The change can take up to five seconds.`
+
+Why:
+
+- The original paragraph has seven sentences.
+- The revised text divides the information at a logical boundary.
+- No information is removed to satisfy the paragraph limit.
+
+## Preserve modality and negation
+
+Before:
+
+`The operator must not open the cover while the unit is energized.`
+
+After:
+
+`If the unit is energized, the operator must not open the cover.`
+
+Why:
+
+- `must not` keeps the same prohibition.
+- The condition becomes explicit.
+- The revision does not weaken the requirement.
+
+## Preserve quantities and units
+
+Before:
+
+`Keep the distance between 10 mm and 15 mm.`
+
+After:
+
+`Keep a distance of 10 mm to 15 mm.`
+
+Why:
+
+- The quantity and unit are preserved.
+- The permitted range is unchanged.
+
+## Ambiguous source
+
+Before:
+
+`Move the unit next to the support and inspect it.`
+
+Do not silently rewrite this as if `it` has one certain referent.
+
+Preferred behavior:
+
+`The word "it" is ambiguous. It can refer to the unit or the support. Identify the intended referent before you rewrite the instruction.`
+
+Why:
+
+- The source contains more than one plausible interpretation.
+- The skill must identify the ambiguity instead of inventing an answer.
+
 ## Non-English output
 
 If the user asks for non-English text in an ASD-STE100 style, apply the same clarity principles but do not call the result formally compliant with ASD-STE100.
