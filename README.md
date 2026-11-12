@@ -10,17 +10,34 @@ The primary goal is comprehension without semantic loss: reduce ambiguity and co
 
 ## Install
 
-Install from the public repository with the skills CLI:
+Install the skill directly with the standard skills CLI:
 
 ```bash
 npx skills add jmeiracorbal/asd-ste100
 ```
+
+That is the complete installation. The skill does not install hooks, run bootstrap code, execute local helpers, or require Python or another runtime from the user.
 
 Inspect the skill before installing:
 
 ```bash
 npx skills add jmeiracorbal/asd-ste100 --list
 ```
+
+## Native Agent Skill
+
+The skill is declarative. Its behavior is defined by `SKILL.md` and the reference files that the agent reads when needed.
+
+It does not depend on:
+
+- hooks;
+- bootstrap scripts;
+- background processes;
+- local linters;
+- wrapper commands;
+- runtime-specific integration code.
+
+Any compatible Agent Skills client can consume the same instructions without an additional installation step.
 
 ## What it does
 
@@ -96,90 +113,16 @@ Check this text for strict ASD-STE100 compliance.
 Explain this in controlled technical English without changing the technical terminology.
 ```
 
-## Deterministic verification
-
-The skill includes `scripts/ste-lint.py`, a dependency-free Python verifier for rules that can be checked mechanically.
-
-Lint procedural text:
-
-```bash
-python scripts/ste-lint.py lint --type procedure procedure.md
-```
-
-Lint descriptive text:
-
-```bash
-python scripts/ste-lint.py lint --type description description.md
-```
-
-The linter checks:
-
-- maximum 20 words per procedural sentence;
-- maximum 25 words per descriptive sentence;
-- maximum six sentences per paragraph;
-- contractions;
-- semicolons;
-- vertical-list introduction, capitalization, punctuation, and final period.
-
-Exit code `0` means that no deterministic violation was found. Exit code `1` means that at least one violation was found.
-
-### Verify rewrite fidelity
-
-Compare a final rewrite with its source:
-
-```bash
-python scripts/ste-lint.py details original.md rewritten.md
-```
-
-The fidelity checker compares mechanically extractable details in both artifacts:
-
-- numbers;
-- numeric ranges;
-- percentages;
-- units associated with numeric values;
-- acronyms;
-- identifiers and inline-code tokens;
-- negation count;
-- fenced code-block content.
-
-The command fails if one of these details disappears or a new one is introduced.
-
-Machine-readable output is available for both commands:
-
-```bash
-python scripts/ste-lint.py --json lint --type description description.md
-python scripts/ste-lint.py --json details original.md rewritten.md
-```
-
-The checker deliberately does not pretend to prove semantic equivalence. Conditions, causality, sequence, uncertainty, modality, terminology, and other semantic relationships still require the semantic-fidelity review defined by the skill.
-
-## Rewrite verification workflow
-
-For an English rewrite, the operational sequence is:
-
-1. Preserve the original artifact.
-2. Classify the target as procedural or descriptive.
-3. Write the draft.
-4. Run the applicable deterministic lint.
-5. Correct every reported violation.
-6. Run the fidelity comparison against the original.
-7. Correct every missing or added technical detail.
-8. Run both checks again on the final artifact.
-9. Apply the semantic-fidelity checklist.
-10. Deliver only the artifact that passed the final checks.
-
-For new English text without a source artifact, the lint step applies. For reviews, deterministic lint is the first pass before the non-mechanical checklist.
-
 ## Scope and limitations
 
-The deterministic verifier covers only properties that can be checked reliably without pretending that regex or heuristics understand the full meaning of a document.
+The skill applies the rules and review guidance directly through the agent. It does not claim that an instruction set can prove semantic equivalence or certify formal ASD-STE100 compliance by itself.
 
 It does not:
 
-- certify formal ASD-STE100 compliance;
+- certify formal ASD-STE100 compliance without the official sources required for that review;
 - reproduce or replace the official controlled dictionary;
 - infer missing project terminology;
-- prove that two texts are semantically equivalent;
+- silently change quantities, conditions, modality, uncertainty, negation, sequence, or dependencies;
 - replace human review where formal compliance is required.
 
 The skill does not silently rewrite controlled warnings, cautions, legal text, mandatory statements, or other wording that the user is not authorized to change.
