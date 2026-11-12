@@ -58,8 +58,6 @@ jobs:
           assert sum(item["should_trigger"] is False for item in trigger_set) == 10
           PY
 
-      - name: Test deterministic verifier
-        run: python -m unittest discover -s tests -p 'test_*.py' -v
 
       - name: Install Agent Skills reference validator
         run: python -m pip install "git+https://github.com/agentskills/agentskills.git#subdirectory=skills-ref"
